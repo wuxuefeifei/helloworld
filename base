@@ -1,0 +1,14 @@
+proc sql;
+create table temp as 
+select * from class
+group by sex ;
+
+proc sql;
+create table temp1 as 
+select 
+case when height <= 20 then '1:(0,20]'
+else '2:(20,**)'
+end as height_group ,
+count(name) as renshu 
+from class
+group by 1 ;
